@@ -13,6 +13,10 @@ namespace Persistencia.Repositorios
         /*select nombre, mensaje from chat
         inner join usuarios on usuarios.id = chat.id_usuario
         where chat.id_diag=1;*/
+        public int hola()
+        {
+            return 5;
+        }
         public List<MensajeEntidad> GetMensajes(long diag)
         {
             
