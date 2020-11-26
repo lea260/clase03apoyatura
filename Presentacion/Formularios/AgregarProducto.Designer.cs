@@ -199,6 +199,7 @@
             this.Controls.Add(this.groupProd);
             this.Name = "AgregarProducto";
             this.Text = "Agregar Producto";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AgregarProducto_FormClosing);
             this.groupProd.ResumeLayout(false);
             this.groupProd.PerformLayout();
             this.ResumeLayout(false);

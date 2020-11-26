@@ -29,7 +29,7 @@ namespace Presentacion.Formularios
             InitializeComponent();
         }
 
-        private void btnClick_Click(object sender, EventArgs e)
+        public void btnClick_Click(object sender, EventArgs e)
         {
             //llamo a conexion.             
             string consulta = txtConsulta.Text;
@@ -70,7 +70,7 @@ namespace Presentacion.Formularios
                 prod.Descripcion = (string)fila.Cells[2].Value;
                 prod.Precio = (float)fila.Cells[3].Value;
                 prod.Fecha = (DateTime)fila.Cells[4].Value;                
-                Form form = new AgregarProducto(prod, Modo.Actualizar);
+                Form form = new AgregarProducto(prod, Modo.Actualizar, this);
                 form.Show();
             }
             

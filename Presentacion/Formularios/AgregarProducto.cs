@@ -17,6 +17,8 @@ namespace Presentacion.Formularios
     public partial class AgregarProducto : Form
     {
         private readonly Modo modo;
+        private FormInicio formInicio;
+
         public AgregarProducto()
         {
             InitializeComponent();               
@@ -51,6 +53,11 @@ namespace Presentacion.Formularios
             // ocultar el boton de agregar
             btnAgregar.Enabled = false;
             txtid.Enabled = false;
+        }
+
+        public AgregarProducto(DataProducto prod, Modo modo, FormInicio formInicio) : this(prod, modo)
+        {
+            this.formInicio = formInicio;
         }
 
         public void Iniciar()
@@ -139,6 +146,11 @@ namespace Presentacion.Formularios
                 Producto producto = new Producto();
                 producto.EliminarProducto(idproducto);                
             }
+        }
+
+        private void AgregarProducto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formInicio.btnClick_Click(sender, e);
         }
     }
 }
