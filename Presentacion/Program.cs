@@ -23,7 +23,7 @@ namespace Presentacion
             //Application.Run(new Login());
             
 
-            Application.Run(new Form2());
+            Application.Run(new FomularioLogin());
         }
     }
 }
