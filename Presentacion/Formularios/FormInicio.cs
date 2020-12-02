@@ -92,7 +92,7 @@ namespace Presentacion.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            Form form = new AgregarProducto(Modo.Agregar);
+            Form form = new AgregarProducto(Modo.Agregar, this);
             form.Show();
         }
 

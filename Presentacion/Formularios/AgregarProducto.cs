@@ -27,10 +27,11 @@ namespace Presentacion.Formularios
         /// se usa para agregar
         /// </summary>
         /// <param name="modo"></param>
-        public AgregarProducto(Modo modo)
+        public AgregarProducto(Modo modo, FormInicio formInicio)
         {
             InitializeComponent();
             this.modo = modo;
+            this.formInicio = formInicio;
             this.Text = "Agregar Nuevo Producto";
             groupProd.Text = "Agregar Nuevo Producto";
             // ocultar el boton de editar
