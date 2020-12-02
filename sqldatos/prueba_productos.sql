@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `productos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
   `id_productos` int NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `codigo` varchar(45) COLLATE utf8_unicode_ci NOT NULL unique,
   `descripcion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
