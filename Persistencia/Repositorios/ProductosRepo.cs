@@ -3,6 +3,8 @@ using Persistencia.Contratos;
 using Persistencia.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Persistencia.Repositorios
@@ -57,6 +59,7 @@ namespace Persistencia.Repositorios
                         string descripcion = (reader[2] != DBNull.Value) ? reader.GetString(2) : "";
                         string precio = (reader[3] != DBNull.Value) ? reader.GetString(3) : "0";
                         string fecha = (reader[4] != DBNull.Value) ? reader.GetString(4) : "1/1/2000 0:00:00";
+                    
                         ProductoEntidad prod = new ProductoEntidad
                         {
                             Id_productos = long.Parse(id),
@@ -64,7 +67,21 @@ namespace Persistencia.Repositorios
                             Descripcion = descripcion,
                             Precio = float.Parse(precio)
                         };
-                        DateTime fechaD = DateTime.ParseExact(fecha, "d/M/yyyy H:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        DateTime fechaD;
+                        //CultureInfo provider = CultureInfo.InvariantCulture;
+                        try
+                        {
+                            fechaD = DateTime.ParseExact(fecha, "MM/dd/yyyy hh:mm:ss tt",
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            DateTimeStyles.None);
+                            //DateTime fechaD = DateTime.ParseExact(fecha, "d/M/yyyy H:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                            //DateTime fechaD = DateTime.ParseExact(fecha, "d/M/yyyy H:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                        catch (Exception ex)
+                        {
+                            string mensaje = ex.ToString();
+                            fechaD = new DateTime(2012, 12, 15);
+                        }                        
                         prod.Fecha = fechaD;
                         list.Add(prod);
                     }
