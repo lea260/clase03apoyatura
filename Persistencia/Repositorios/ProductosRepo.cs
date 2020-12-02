@@ -58,7 +58,7 @@ namespace Persistencia.Repositorios
                         string codigo = (reader[1] != DBNull.Value) ? reader.GetString(1) : ""; ;
                         string descripcion = (reader[2] != DBNull.Value) ? reader.GetString(2) : "";
                         string precio = (reader[3] != DBNull.Value) ? reader.GetString(3) : "0";
-                        string fecha = (reader[4] != DBNull.Value) ? reader.GetString(4) : "1/1/2000 0:00:00";
+                        string fecha = (reader[4] != DBNull.Value) ? reader.GetString(4) : "1/1/2000 0:00:00 AM";
                     
                         ProductoEntidad prod = new ProductoEntidad
                         {
@@ -71,7 +71,7 @@ namespace Persistencia.Repositorios
                         //CultureInfo provider = CultureInfo.InvariantCulture;
                         try
                         {
-                            fechaD = DateTime.ParseExact(fecha, "MM/dd/yyyy hh:mm:ss tt",
+                            fechaD = DateTime.ParseExact(fecha, "M/d/yyyy hh:mm:ss tt",
                             System.Globalization.CultureInfo.InvariantCulture,
                             DateTimeStyles.None);
                             //DateTime fechaD = DateTime.ParseExact(fecha, "d/M/yyyy H:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
@@ -98,6 +98,7 @@ namespace Persistencia.Repositorios
                 if (conexion != null)
                 {
                     conexion.Close();
+                    conexion.Dispose();
                 }
             }
             return list;
@@ -130,6 +131,7 @@ namespace Persistencia.Repositorios
                 if (conexion != null)
                 {
                     conexion.Close();
+                    conexion.Dispose();
                 }
             }
         }
