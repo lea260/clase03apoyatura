@@ -28,8 +28,22 @@ namespace Presentacion.Formularios
         {
             InitializeComponent();
         }
-
-        public void btnClick_Click(object sender, EventArgs e)
+        public void ActulizarProductos()
+        {
+            string consulta = txtConsulta.Text;
+            if (consulta.Trim() != string.Empty)
+            {
+                consulta = txtConsulta.Text;
+            }
+            else
+            {
+                consulta = null;
+            }
+            ProductosServicio servicio = new ProductosServicio();
+            List<DataProducto> list = servicio.ObtenerProductos(consulta);
+            dgvProductos.DataSource = list;
+        }
+        private void btnClick_Click(object sender, EventArgs e)
         {
             //llamo a conexion.             
             string consulta = txtConsulta.Text;

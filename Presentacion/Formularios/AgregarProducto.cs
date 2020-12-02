@@ -150,7 +150,7 @@ namespace Presentacion.Formularios
 
         private void AgregarProducto_FormClosing(object sender, FormClosingEventArgs e)
         {
-            formInicio.btnClick_Click(sender, e);
+            formInicio.ActulizarProductos();
         }
     }
 }
