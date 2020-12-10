@@ -11,13 +11,25 @@ namespace Negocio.Modelo
     /// </summary>
     public class Usuario
     {
-        public void AgregarUsuario(string nombreUsuario, string password, string programa)
+        private string nombre;
+        private string pasword;
+
+        public Usuario(string nombre, string pasword)
         {
-
-            throw new NotImplementedException();
-
+            //
+            if (nombre.Length > 60)
+            {
+                this.nombre = nombre.Substring(0,4);
+            }
+            else
+            {
+                this.nombre = nombre;
+            }            
+            this.pasword = pasword;
         }
 
+
+        
         public bool Ingresar(string nombreUsuario, string password, string programa)
         {
             bool ingreso = false;
@@ -26,5 +38,26 @@ namespace Negocio.Modelo
             return ingreso;
             //throw new NotImplementedException();
         }
+        public bool Ingresar(string nombreUsuario, string password)
+        {
+            bool ingreso = false;
+            UsuarioRepo usuarioRepo = new UsuarioRepo();
+            ingreso = usuarioRepo.Ingresar(nombreUsuario, password);
+            return ingreso;
+            //throw new NotImplementedException();
+        }
+
+
+        public bool Ingresar()
+        {
+            bool ingreso = false;
+            UsuarioRepo usuarioRepo = new UsuarioRepo();
+            ingreso = usuarioRepo.Ingresar(this.nombre, this.pasword);
+            return ingreso;
+            //throw new NotImplementedException();
+        }
+
+
     }
+
 }
